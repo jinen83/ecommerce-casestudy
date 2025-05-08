@@ -5,40 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Purplle Migrated admin panels to DronaHQ Low Code <> Case Study</title>
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
-    header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: #fff; border-bottom: 1px solid #e0e0e0; }
-    header img { max-height: 50px; }
-    #container { display: flex; }
-    #sidebar {
-      position: fixed;
-      right: 0;
-      top: 0;
-      width: 200px;
-      height: 100vh;
-      overflow-y: auto;
-      background: #f4f4f4;
-      border-left: 1px solid #ccc;
-      padding: 1rem;
-      box-sizing: border-box;
+     body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: #fff;
     }
-    #sidebar ul { list-style: none; padding: 0; }
-    #sidebar li { margin: 0.5rem 0; }
-    #sidebar a { text-decoration: none; color: #2c3e50; }
-    #sidebar a:hover { text-decoration: underline; }
-    .gradient-text { background: linear-gradient(90deg, #7928CA, #FF0080); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .content { margin-right: 220px; padding: 2rem; }
-    h1, h2, h3, h4 { color: #2c3e50; margin-top: 2rem; }
-    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
-    th { background-color: #f9f9f9; }
-    section { margin-bottom: 2rem; }
-    .calculator { background: #f9f9f9; padding: 1rem; border: 1px solid #ccc; border-radius: 4px; max-width: 400px; }
-    .calculator label { display: block; margin-top: 0.5rem; }
-    .calculator select, .calculator input { width: 100%; padding: 0.4rem; margin-top: 0.3rem; }
-    .result { margin-top: 1rem; font-weight: bold; }
-    .small-link { font-size: 0.9rem; margin-top: 0.5rem; }
-    pre { background: #eee; padding: 1rem; overflow-x: auto; }
-        #container {
+    header {
+      position: relative;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      flex-wrap: wrap;
+    }
+    header img {
+      max-height: 50px;
+      margin-bottom: 0.5rem;
+    }
+    #menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-left: auto;
+    }
+    #container {
       display: flex;
       justify-content: center;
       align-items: flex-start;
@@ -47,10 +44,100 @@
       padding: 1rem;
       box-sizing: border-box;
     }
-
     .content {
       flex: 1;
       padding: 2rem;
+      box-sizing: border-box;
+      width: 100%;
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      display: block;
+      overflow-x: auto;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      text-align: left;
+      white-space: nowrap;
+    }
+    th { background-color: #f9f9f9; }
+    section { margin-bottom: 2rem; }
+    .gradient-text {
+      background: linear-gradient(90deg, #7928CA, #FF0080);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h1, h2, h3, h4 { color: #2c3e50; margin-top: 2rem; }
+    .calculator {
+      background: #f9f9f9;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      max-width: 400px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+    .calculator label { display: block; margin-top: 0.5rem; }
+    .calculator select, .calculator input { width: 100%; padding: 0.4rem; margin-top: 0.3rem; box-sizing: border-box; }
+    .result { margin-top: 1rem; font-weight: bold; }
+    .small-link { font-size: 0.9rem; margin-top: 0.5rem; }
+    pre { background: #eee; padding: 1rem; overflow-x: auto; }
+
+    /* Sidebar - hidden by default in mobile, fixed on large screens */
+    #sidebar {
+      display: none;
+    }
+
+    /* Layout for larger viewports */
+    @media only screen and (min-width: 769px) {
+      body {
+        padding-right: 200px;
+      }
+      #sidebar {
+        display: block;
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 200px;
+        height: 100vh;
+        overflow-y: auto;
+        background: #f4f4f4;
+        border-left: 1px solid #ccc;
+        padding: 1rem;
+        box-sizing: border-box;
+      }
+    }
+
+    /* Mobile Responsive */
+    @media only screen and (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+      }
+      header img { margin: 0 0 1rem 0; }
+      #menu-toggle { display: block; }
+      #container { flex-direction: column; padding: 0.5rem; }
+      .content { padding: 1rem; }
+      #sidebar {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        max-height: calc(100vh - 60px);
+        display: none;
+        border-top: 1px solid #ccc;
+        padding: 1rem;
+        background: #f4f4f4;
+        z-index: 999;
+      }
+      #sidebar.open { display: block; }
+      .calculator { max-width: 100%; }
+      h1, h2, h3, h4 { font-size: 1.2rem; }
+      p, ul, ol, blockquote, pre { font-size: 1rem; }
     }
   </style>
 </head>
@@ -59,12 +146,13 @@
   <header>
     <img src="https://dms-bucket-727.s3.amazonaws.com/logos/DronaHQ_Logo_Dark.png?AWSAccessKeyId=AKIAQB6LFHGEI7EAK3UF&Expires=1778221710&Signature=dunjNNgF4L6L9xgUm7Xp%2BftKNrc%3D" alt="DronaHQ Logo" />
     <img src="https://dms-bucket-727.s3.amazonaws.com/logos/purplle%20jpg.jpeg?AWSAccessKeyId=AKIAQB6LFHGEI7EAK3UF&Expires=1778221684&Signature=rMZ0enYL1ggrwWLvk5xn3uXZZJc%3D" alt="Purplle Logo" />
+    <button id="menu-toggle" aria-label="Toggle Quick Links">☰</button>
   </header>
 
   <div id="container">
     <div class="content">
       <h1 class="gradient-text"><a href="https://purplle.com" target="_blank">{Purplle.com}</a> Migrated 600 admin panels to DronaHQ Low Code Platform &lt;&gt; Case Study</h1>
-      <h2>How a 2-Person Team Replaced 600+ Legacy Panels and saved over 150K USD per year</h2>
+      <h2>How a 2-Member Team migrates & maintains over 600+ Legacy Panels to DronaHQ & saves Purplle over 150K USD per year</h2>
 
       <section id="snapshot">
         <h3>Company Snapshot</h3>
@@ -289,6 +377,13 @@ Annual $ saved = 26 × $8,000 = $208,000
       syncMaintPct(maintPctEl.value);
       update();
     })();
+    
+    // Toggle sidebar on mobile
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    });
+    
   </script>
 </body>
 </html>
