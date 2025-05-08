@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Purplle Migrated admin panels to DronaHQ Low Code <> Case Study</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: #fff; border-bottom: 1px solid #e0e0e0; }
+    header img { max-height: 50px; }
+    #container { display: flex; }
+    #sidebar {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 200px;
+      height: 100vh;
+      overflow-y: auto;
+      background: #f4f4f4;
+      border-left: 1px solid #ccc;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+    #sidebar ul { list-style: none; padding: 0; }
+    #sidebar li { margin: 0.5rem 0; }
+    #sidebar a { text-decoration: none; color: #2c3e50; }
+    #sidebar a:hover { text-decoration: underline; }
+    .gradient-text { background: linear-gradient(90deg, #7928CA, #FF0080); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .content { margin-right: 220px; padding: 2rem; }
+    h1, h2, h3, h4 { color: #2c3e50; margin-top: 2rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background-color: #f9f9f9; }
+    section { margin-bottom: 2rem; }
+    .calculator { background: #f9f9f9; padding: 1rem; border: 1px solid #ccc; border-radius: 4px; max-width: 400px; }
+    .calculator label { display: block; margin-top: 0.5rem; }
+    .calculator select, .calculator input { width: 100%; padding: 0.4rem; margin-top: 0.3rem; }
+    .result { margin-top: 1rem; font-weight: bold; }
+    .small-link { font-size: 0.9rem; margin-top: 0.5rem; }
+    pre { background: #eee; padding: 1rem; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <!-- Header with Logos -->
+  <header>
+    <img src="https://dms-bucket-727.s3.amazonaws.com/logos/DronaHQ_Logo_Dark.png?AWSAccessKeyId=AKIAQB6LFHGEI7EAK3UF&Expires=1778221710&Signature=dunjNNgF4L6L9xgUm7Xp%2BftKNrc%3D" alt="DronaHQ Logo" />
+    <img src="https://dms-bucket-727.s3.amazonaws.com/logos/purplle%20jpg.jpeg?AWSAccessKeyId=AKIAQB6LFHGEI7EAK3UF&Expires=1778221684&Signature=rMZ0enYL1ggrwWLvk5xn3uXZZJc%3D" alt="Purplle Logo" />
+  </header>
+
+  <div id="container">
+    <div class="content">
+      <h1 class="gradient-text"><a href="https://purplle.com" target="_blank">{Purplle.com}</a> Migrated 600 admin panels to DronaHQ Low Code Platform &lt;&gt; Case Study</h1>
+      <h2>How a 2-Person Team Replaced 600+ Legacy Panels and saved over 150K USD per year</h2>
+
+      <section id="snapshot">
+        <h3>Company Snapshot</h3>
+        <table>
+          <tr><th>Sector</th><td>Beauty e-commerce & marketplace (India)</td></tr>
+          <tr><th>Daily Scale</th><td>50k – 100k orders dispatched</td></tr>
+          <tr><th>Pre-Migration Stack</th><td>PHP, React.js, Angular, assorted in-house scripts</td></tr>
+          <tr><th>Low-Code Platform</th><td>DronaHQ (self-hosted)</td></tr>
+          <tr><th>Migration Window</th><td>2023 Q4 – 2024 Q3 (phased)</td></tr>
+        </table>
+      </section>
+
+      <section id="challenge">
+        <h3>1. The Challenge</h3>
+        <table>
+          <tr><th>Pain Point</th><th>What It Looked Like at Purplle</th></tr>
+          <tr><td>Crushing technical debt</td><td>≈ 600 known panels plus an “unknown” tail; some on 8-year-old libs. Any PHP upgrade risked outages.</td></tr>
+          <tr><td>Weeks-long delivery cycles</td><td>Minor field tweak = 3–4 days; new complex panel = 2–3 weeks; growing backlog.</td></tr>
+          <tr><td>Maintenance gridlock</td><td>Panels built by multiple teams, zero standardisation; steep onboarding curve.</td></tr>
+          <tr><td>Expensive full-stack detours</td><td>Backend engineers writing UI boilerplate instead of scaling services.</td></tr>
+          <tr><td>Fragmented ownership</td><td>WMS, Logistics, Pricing, Category & CS each built their own tools—no central view.</td></tr>
+        </table>
+      </section>
+
+      <section id="decision">
+        <h3>2. The Low-Code Decision</h3>
+        <blockquote>
+          “Moving broadly to low code was <strong>a very, very important step</strong>—we could not keep patching legacy panels.”<br>
+          <em>— Vivek S., VP Engineering, Purplle</em>
+        </blockquote>
+        <ol>
+          <li>Expose headless APIs for every capability.</li>
+          <li>Centralise panel development on one platform.</li>
+          <li>Run a lean specialist pod instead of scattered devs.</li>
+        </ol>
+      </section>
+
+      <section id="playbook">
+        <h3>3. Migration Playbook</h3>
+        <table>
+          <tr><th>Phase</th><th>Key Moves</th><th>Duration</th></tr>
+          <tr><td>0 — Strategy &amp; API Foundation</td><td>Decide “low code first”; ship REST/GraphQL gateway</td><td>3–4 mo</td></tr>
+          <tr><td>1 — Audit &amp; Prioritise</td><td>Catalogue 600+ panels; flag unused; pick “Top 100”</td><td>1 mo</td></tr>
+          <tr><td>2 — Pilot + Team Set-up</td><td>Form 2-dev low-code pod; rebuild first 60; set CI/CD</td><td>2 mo</td></tr>
+          <tr><td>3 — Mass Migration</td><td>Batch-migrate next 100+; tight loop with backend team</td><td>4–5 mo</td></tr>
+          <tr><td>4 — Continuous Ops</td><td>All new requests default to DronaHQ; retire long-tail</td><td>Ongoing</td></tr>
+        </table>
+        <p><em>*Actuals per team interviews; phases overlap for agility.</em></p>
+      </section>
+
+      <section id="impact">
+        <h3>4. Quantified Impact</h3>
+        <h4>Man-Month Math</h4>
+        <table>
+          <tr><th></th><th>Pre-Migration</th><th>Post-Migration</th></tr>
+          <tr><td>Active builders</td><td>10–15 ad-hoc devs (≈ 12 FTE avg)</td><td>2 dedicated builders</td></tr>
+          <tr><td>Annual effort</td><td>~50 man-months maintaining & enhancing 600 panels (≈ <strong>10%</strong> annually)</td><td><strong>24 man-months</strong> total (maintenance + new)</td></tr>
+          <tr><td>Man-months saved</td><td colspan="2"><strong>26</strong></td></tr>
+        </table>
+        <p>If a fully-loaded senior engineer costs <strong>$8,000/month</strong>:</p>
+        <pre>
+Annual $ saved = 26 × $8,000 = $208,000
+        </pre>
+
+        <h4>Velocity Gains</h4>
+        <table>
+          <tr><th>Metric</th><th>Before</th><th>After</th></tr>
+          <tr><td>Simple panel build</td><td>3–4 days</td><td><strong>15 min</strong></td></tr>
+          <tr><td>Complex mock-up</td><td>2–3 weeks</td><td><strong>2–3 days</strong></td></tr>
+        </table>
+      </section>
+
+      <section id="stick">
+        <h3>5. What Made It Stick</h3>
+        <ul>
+          <li><strong>API-first discipline</strong> – panels are shells; logic in services.</li>
+          <li><strong>Single source of truth</strong> – visual components enforce consistency.</li>
+          <li><strong>Lean, central team</strong> – clear ownership, rapid KT.</li>
+          <li><strong>Developer guardrails</strong> – version history, staged envs, RBAC.</li>
+          <li><strong>Cultural flip</strong> – “Low code unless proven otherwise.”</li>
+        </ul>
+      </section>
+
+      <section id="takeaways">
+        <h3>6. Takeaways for Engineering Leaders</h3>
+        <ol>
+          <li>Low-code ≠ shadow IT when paired with an API backbone.</li>
+          <li>Audit usage first—kill dead panels, then migrate.</li>
+          <li>Guardrails beat guidelines—remove review fatigue.</li>
+          <li>Measure dev hours saved, not just panels rebuilt.</li>
+          <li>Shoot for 10× throughput; incremental gains lose to inertia.</li>
+        </ol>
+      </section>
+
+      <section id="video">
+        <h3>See DronaHQ in action</h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/O7F4UJkwkBI?ref=jd-blogs" title="Purplle Low-Code Transformation Demo" frameborder="0" allowfullscreen referrerpolicy="no-referrer"></iframe>
+      </section>
+		<h3> Check what engineering $$ can be saved if you migrate your panels to DronaHQ</h3>
+      <section id="calculator" class="calculator">
+        <h3>Financial Impact Calculator</h3>
+        <label for="location">Engineering Location:</label>
+        <select id="location">
+          <option value="USA">USA</option>
+          <option value="UK">UK</option>
+          <option value="Germany">Germany</option>
+          <option value="Australia">Australia</option>
+          <option value="India">India</option>
+        </select>
+
+        <label for="rate">Hourly Rate (USD):</label>
+        <input type="number" id="rate" />
+
+        <label for="numPanels">Number of Panels:</label>
+        <input type="number" id="numPanels" value="100" min="0" />
+
+        <label for="maintPct">Cumulative 3 year Maintenance % of Build Cost (45-75%): <span id="maintPctVal">60%</span></label>
+        <div style="display: flex; align-items: center;">
+          <input type="range" id="maintPct" min="0" max="100" value="60" style="flex:1;" />
+          <input type="number" id="maintPctInput" min="0" max="100" value="60" style="width:60px; margin-left:0.5rem;" />
+        </div>
+
+        <div class="result">
+          <p>Hours per Panel: <span id="hrsPerPanel">240</span> hrs</p>
+          <p>Total Build Hours: <span id="buildHrs">0</span> hrs</p>
+          <p>Build Cost: <span id="buildCost">$0</span></p>
+          <p>Maintenance Cost: <span id="maintCost">$0</span> (over 3 yrs)</p>
+          <p>Total Cost (Build + Maintenance): <span id="totalCost">$0</span></p>
+          <p class="highlight">DronaHQ Cost (3yr TCO): <span id="dronaCost">$0</span></p>
+          <p class="highlight">Total Savings with DronaHQ: <span id="savingsDrona">$0</span></p>
+           <p class="small-link"><a href="https://dronahq.com/signup?ref=Jd-purplle-blog" target="_blank">Start building your 1st panel with DronaHQ now.</a></p>
+        </div>
+      </section>
+    </div>
+
+    <nav id="sidebar">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#snapshot">Snapshot</a></li>
+        <li><a href="#challenge">The Challenge</a></li>
+        <li><a href="#decision">Low-Code Decision</a></li>
+        <li><a href="#playbook">Migration Playbook</a></li>
+        <li><a href="#impact">Quantified Impact</a></li>
+        <li><a href="#stick">What Made It Stick</a></li>
+        <li><a href="#takeaways">Takeaways</a></li>
+        <li><a href="#video">DronaHQ Demo Video</a></li>
+        <li><a href="#calculator">ROI Calculator</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <script>
+    (function() {
+      const rates = { USA: 50, UK: 60, Germany: 55, Australia: 65, India: 25 };
+      const hoursPerPanel = 30 * 8;
+
+      const locationEl = document.getElementById('location');
+      const rateEl = document.getElementById('rate');
+      const numPanelsEl = document.getElementById('numPanels');
+      const maintPctEl = document.getElementById('maintPct');
+      const maintPctInputEl = document.getElementById('maintPctInput');
+      const maintPctVal = document.getElementById('maintPctVal');
+
+      const hrsPerPanelEl = document.getElementById('hrsPerPanel');
+      const buildHrsEl = document.getElementById('buildHrs');
+      const buildCostEl = document.getElementById('buildCost');
+      const maintCostEl = document.getElementById('maintCost');
+      const totalCostEl = document.getElementById('totalCost');
+      const dronaCostEl = document.getElementById('dronaCost');
+      const savingsDronaEl = document.getElementById('savingsDrona');
+
+      function syncMaintPct(value) {
+        maintPctEl.value = value;
+        maintPctInputEl.value = value;
+        maintPctVal.textContent = value + '%';
+      }
+
+      function update() {
+        // Prefill rate based on location only if user hasn't modified
+        if (!rateEl.dataset.userEdited) {
+          rateEl.value = rates[locationEl.value] || 0;
+        }
+        const rate = parseFloat(rateEl.value) || 0;
+        const locale = 'en-US';
+        const currency = 'USD';
+
+        const panels = parseInt(numPanelsEl.value, 10) || 0;
+        const maintPct = parseInt(maintPctEl.value, 10) / 100;
+
+        const buildHrs = panels * hoursPerPanel;
+        const buildCost = buildHrs * rate;
+        const maintCost = buildCost * maintPct;
+        const totalCost = buildCost + maintCost;
+        const dronaCost = maintCost * 0.5;
+        const savingsDrona = totalCost - dronaCost;
+
+        hrsPerPanelEl.textContent = hoursPerPanel;
+        buildHrsEl.textContent = buildHrs;
+        buildCostEl.textContent = new Intl.NumberFormat(locale, { style: 'currency', currency }).format(buildCost);
+        maintCostEl.textContent = new Intl.NumberFormat(locale, { style: 'currency', currency }).format(maintCost);
+        totalCostEl.textContent = new Intl.NumberFormat(locale, { style: 'currency', currency }).format(totalCost);
+        dronaCostEl.textContent = new Intl.NumberFormat(locale, { style: 'currency', currency }).format(dronaCost);
+        savingsDronaEl.textContent = new Intl.NumberFormat(locale, { style: 'currency', currency }).format(savingsDrona);
+      }
+
+      rateEl.addEventListener('input', function() {
+        rateEl.dataset.userEdited = true;
+        update();
+      });
+      locationEl.addEventListener('change', update);
+      numPanelsEl.addEventListener('input', update);
+      maintPctEl.addEventListener('input', function() { syncMaintPct(this.value); update(); });
+      maintPctInputEl.addEventListener('input', function() {
+        let val = parseInt(this.value, 10);
+        if (isNaN(val) || val < 0) val = 0;
+        if (val > 100) val = 100;
+        syncMaintPct(val);
+        update();
+      });
+
+      // Initial setup
+      syncMaintPct(maintPctEl.value);
+      update();
+    })();
+  </script>
+</body>
+</html>
